@@ -121,3 +121,79 @@ This endpoint fetches information about a Discord Application
 Parameter | Required | Description
 --------- | ------- | -----------
 id | true | The ID of a Discord Application
+
+## User Information
+
+```ruby
+require 'uri'
+require 'net/http'
+
+id = 'DISCORD_USER_ID'
+url = URI("https://logic.rest/api/v1/discord/user/#{id}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+response = http.request(request)
+
+puts response.read_body
+```
+
+```python
+import requests
+
+id = "DISCORD_USER_ID"
+url = f"https://logic.rest/api/v1/discord/user/{id}"
+
+response = requests.get(url)
+
+print(response.text)
+```
+
+```shell
+curl "https://logic.rest/api/v1/discord/user/DISCORD_USER_ID"
+```
+
+```javascript
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
+const id = "DISCORD_USER_ID";
+const url = `https://logic.rest/api/v1/discord/user/${id}`;
+
+fetch(url)
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+> This endpoint will respond with the following JSON response
+
+```json
+{
+   "status":200,
+   "data":{
+      "id":"1065368179494359071",
+      "username":"logic.rest",
+      "discriminator":"9232",
+      "avatar_code":"b012035185190963be7a49a51e732ddb",
+      "banner_code":null,
+      "avatar_decoration":null,
+      "public_flags":0,
+      "banner_color":null,
+      "accent_color":null
+   }
+}
+```
+
+This endpoint fetches information about a Discord User
+
+### HTTP Request
+
+`GET https://logic.rest/api/v1/discord/user/:id`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+id | true | The ID of a Discord User
