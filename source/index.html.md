@@ -73,7 +73,7 @@ fetch(url)
   .catch(error => console.error(error));
 ```
 
-> This endpoint will respond with the following response
+> This endpoint will respond with the following JSON response
 
 ```json
 {
