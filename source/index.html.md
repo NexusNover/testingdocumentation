@@ -28,7 +28,7 @@ Welcome to the documentation website for Logic.rest, a powerful API designed to 
 
 # Discord
 
-## GET Application Information
+## Application Information
 
 ```ruby
 require 'uri'
