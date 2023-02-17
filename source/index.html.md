@@ -1,7 +1,7 @@
 ---
 title: API Reference
 
-language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
+language_tabs:
   - shell
   - ruby
   - python
@@ -19,120 +19,108 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: Documentation for the Kittn API
+    content: This documentation website contains information on how to interact with logic.rest API Endpoints
 ---
 
 # Introduction
 
-Test
+Welcome to the documentation website for Logic.rest, a powerful API designed to help you create scalable and efficient RESTful web services. This website serves as a comprehensive guide to using the Logic.rest API, providing everything you need to get started and build complex web applications.
 
-# Authentication
+# Discord
 
-> To authorize, use this code:
+## GET Application Information
 
 ```ruby
-require 'kittn'
+require 'uri'
+require 'net/http'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+id = 'DISCORD_APPLICATION_ID'
+url = URI("https://logic.rest/api/v1/discord/application/#{id}")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+response = http.request(request)
+
+puts response.read_body
 ```
 
 ```python
-import kittn
+import requests
 
-api = kittn.authorize('meowmeowmeow')
+id = "DISCORD_APPLICATION_ID"
+url = f"https://logic.rest/api/v1/discord/application/{id}"
+
+response = requests.get(url)
+
+print(response.text)
 ```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here" \
-  -H "Authorization: meowmeowmeow"
+curl "https://logic.rest/api/v1/discord/application/DISCORD_APPLICATION_ID"
 ```
 
 ```javascript
-const kittn = require('kittn');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-let api = kittn.authorize('meowmeowmeow');
-```
+const id = "DISCORD_APPLICATION_ID";
+const url = `https://logic.rest/api/v1/discord/application/${id}`;
 
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens" \
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+fetch(url)
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+   "status":200,
+   "data":{
+      "id":"282859044593598464",
+      "name":"ProBot ✨",
+      "description":"Make a Professional Server! Welcome images, voice/text levels, reaction roles, logs,  moderation, and many many more!",
+      "icon_code":"156a0d2872579f1ffcaa5d2127239bfd",
+      "type":null,
+      "hook":true,
+      "terms_of_service_url":"https://probot.io/terms-of-use",
+      "privacy_policy_url":"https://probot.io/privacy-policy",
+      "tags":[
+         "Leveling",
+         "Moderation",
+         "Reaction Roles",
+         "Soical",
+         "Welcome"
+      ],
+      "verify_key":"72afa4f075f512b48b3916961f5fb9e357ba68f943ce8f9facaca3390987a383",
+      "flags":10797056,
+      "bot":{
+         "id":"282859044593598464",
+         "username":"ProBot ✨",
+         "discriminator":"5803",
+         "avatar_code":"156a0d2872579f1ffcaa5d2127239bfd",
+         "is_public?":true,
+         "requires_code_grant?":false,
+         "support_guild_id":"224308865427046402",
+         "approximate_guild_count":8580000
+      }
+   }
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint fetches information about a Discord Application
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://logic.rest/api/v1/discord/application/:id`
 
 ### Query Parameters
 
-Parameter | Default | Description
+Parameter | Required | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+id | true | The ID of a Discord Application
 
 ## Get a Specific Kitten
 
