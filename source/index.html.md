@@ -8,7 +8,7 @@ language_tabs:
   - javascript
 
 toc_footers:
-  - <a href='https://tokens.logic.rest'>Get a Token</a>
+  - <a href='https://tokens.logic.rest'>Generate a Token</a>
 
 includes:
   - errors
@@ -73,7 +73,7 @@ fetch(url)
   .catch(error => console.error(error));
 ```
 
-> The above command returns JSON structured like this:
+> This endpoint will respond with the following response
 
 ```json
 {
