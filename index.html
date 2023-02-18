@@ -319,6 +319,14 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#blaze-rest" class="toc-h1 toc-link" data-title="blaze.rest">blaze.rest</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#random-joke" class="toc-h2 toc-link" data-title="Random Joke">Random Joke</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#discord" class="toc-h1 toc-link" data-title="Discord">Discord</a>
               <ul class="toc-list-h2">
                   <li>
@@ -342,6 +350,61 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the documentation website for blaze.rest, a powerful API designed to help you create scalable and efficient RESTful web services. This website serves as a comprehensive guide to using the blaze.rest API, providing everything you need to get started and build complex web applications.</p>
+<h1 id='blaze-rest'>blaze.rest</h1><h2 id='random-joke'>Random Joke</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
+<span class="nb">require</span> <span class="s1">'net/http'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URI</span><span class="p">(</span><span class="s2">"https://blaze.rest/api/v1/blaze/joke"</span><span class="p">)</span>
+
+<span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="nf">host</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="nf">port</span><span class="p">)</span>
+<span class="n">http</span><span class="p">.</span><span class="nf">use_ssl</span> <span class="o">=</span> <span class="kp">true</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Get</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="nf">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+
+<span class="nb">puts</span> <span class="n">response</span><span class="p">.</span><span class="nf">read_body</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"https://blaze.rest/api/v1/blaze/joke"</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://blaze.rest/api/v1/blaze/joke"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">fetch</span> <span class="o">=</span> <span class="p">(...</span><span class="nx">args</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">import</span><span class="p">(</span><span class="dl">'</span><span class="s1">node-fetch</span><span class="dl">'</span><span class="p">).</span><span class="nx">then</span><span class="p">(({</span><span class="na">default</span><span class="p">:</span> <span class="nx">fetch</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">fetch</span><span class="p">(...</span><span class="nx">args</span><span class="p">));</span>
+
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">`https://blaze.rest/api/v1/blaze/joke`</span><span class="p">;</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="nx">url</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">));</span>
+</code></pre></div>
+<blockquote>
+<p>This endpoint will respond with the following JSON response</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+   </span><span class="nl">"status"</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="w">
+   </span><span class="nl">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nl">"joke"</span><span class="p">:</span><span class="s2">"A boat builder is showing his son one of his forests. He turns to him and says, </span><span class="se">\"</span><span class="s2">Son, one day this will all be oars</span><span class="se">\"</span><span class="s2">"</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint generates a random joke</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://blaze.rest/api/v1/blaze/joke</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>true</td>
+<td>Your blaze.rest API Token</td>
+</tr>
+</tbody></table>
 <h1 id='discord'>Discord</h1><h2 id='application-information'>Application Information</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'uri'</span>
 <span class="nb">require</span> <span class="s1">'net/http'</span>
 
@@ -411,9 +474,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint fetches information about a Discord Application</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://blaze.rest/api/v1/discord/application/:id</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -478,9 +541,9 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint fetches information about a Discord User</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://blaze.rest/api/v1/discord/user/:id</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
