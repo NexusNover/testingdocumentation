@@ -8,7 +8,7 @@ language_tabs:
   - javascript
 
 toc_footers:
-  - <a href='https://tokens.logic.rest'>Generate a Token</a>
+  - <a href='https://tokens.blaze.rest'>Generate a Token</a>
 
 includes:
   - errors
@@ -19,12 +19,12 @@ code_clipboard: true
 
 meta:
   - name: description
-    content: This documentation website contains information on how to interact with logic.rest API Endpoints
+    content: This documentation website contains information on how to interact with blaze.rest API Endpoints
 ---
 
 # Introduction
 
-Welcome to the documentation website for Logic.rest, a powerful API designed to help you create scalable and efficient RESTful web services. This website serves as a comprehensive guide to using the Logic.rest API, providing everything you need to get started and build complex web applications.
+Welcome to the documentation website for blaze.rest, a powerful API designed to help you create scalable and efficient RESTful web services. This website serves as a comprehensive guide to using the blaze.rest API, providing everything you need to get started and build complex web applications.
 
 # Discord
 
@@ -35,7 +35,7 @@ require 'uri'
 require 'net/http'
 
 id = 'DISCORD_APPLICATION_ID'
-url = URI("https://logic.rest/api/v1/discord/application/#{id}")
+url = URI("https://blaze.rest/api/v1/discord/application/#{id}")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -50,7 +50,7 @@ puts response.read_body
 import requests
 
 id = "DISCORD_APPLICATION_ID"
-url = f"https://logic.rest/api/v1/discord/application/{id}"
+url = f"https://blaze.rest/api/v1/discord/application/{id}"
 
 response = requests.get(url)
 
@@ -58,14 +58,14 @@ print(response.text)
 ```
 
 ```shell
-curl "https://logic.rest/api/v1/discord/application/DISCORD_APPLICATION_ID"
+curl "https://blaze.rest/api/v1/discord/application/DISCORD_APPLICATION_ID"
 ```
 
 ```javascript
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const id = "DISCORD_APPLICATION_ID";
-const url = `https://logic.rest/api/v1/discord/application/${id}`;
+const url = `https://blaze.rest/api/v1/discord/application/${id}`;
 
 fetch(url)
   .then(response => response.text())
@@ -114,7 +114,7 @@ This endpoint fetches information about a Discord Application
 
 ### HTTP Request
 
-`GET https://logic.rest/api/v1/discord/application/:id`
+`GET https://blaze.rest/api/v1/discord/application/:id`
 
 ### Query Parameters
 
@@ -129,7 +129,7 @@ require 'uri'
 require 'net/http'
 
 id = 'DISCORD_USER_ID'
-url = URI("https://logic.rest/api/v1/discord/user/#{id}")
+url = URI("https://blaze.rest/api/v1/discord/user/#{id}")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -144,7 +144,7 @@ puts response.read_body
 import requests
 
 id = "DISCORD_USER_ID"
-url = f"https://logic.rest/api/v1/discord/user/{id}"
+url = f"https://blaze.rest/api/v1/discord/user/{id}"
 
 response = requests.get(url)
 
@@ -152,14 +152,14 @@ print(response.text)
 ```
 
 ```shell
-curl "https://logic.rest/api/v1/discord/user/DISCORD_USER_ID"
+curl "https://blaze.rest/api/v1/discord/user/DISCORD_USER_ID"
 ```
 
 ```javascript
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 const id = "DISCORD_USER_ID";
-const url = `https://logic.rest/api/v1/discord/user/${id}`;
+const url = `https://blaze.rest/api/v1/discord/user/${id}`;
 
 fetch(url)
   .then(response => response.text())
@@ -174,7 +174,7 @@ fetch(url)
    "status":200,
    "data":{
       "id":"1065368179494359071",
-      "username":"logic.rest",
+      "username":"blaze.rest",
       "discriminator":"9232",
       "avatar_code":"b012035185190963be7a49a51e732ddb",
       "banner_code":null,
@@ -190,7 +190,7 @@ This endpoint fetches information about a Discord User
 
 ### HTTP Request
 
-`GET https://logic.rest/api/v1/discord/user/:id`
+`GET https://blaze.rest/api/v1/discord/user/:id`
 
 ### Query Parameters
 
