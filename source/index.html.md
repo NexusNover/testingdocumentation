@@ -34,7 +34,7 @@ Welcome to the documentation website for blaze.rest, a powerful API designed to 
 require 'uri'
 require 'net/http'
 
-url = URI("https://blaze.rest/api/v1/blaze/joke")
+url = URI("https://blaze.rest/api/v1/blaze/joke?token=YOUR_BLAZE_TOKEN")
 
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
@@ -47,7 +47,7 @@ puts response.read_body
 
 ```python
 import requests
-url = f"https://blaze.rest/api/v1/blaze/joke"
+url = f"https://blaze.rest/api/v1/blaze/joke?token=YOUR_BLAZE_TOKEN"
 
 response = requests.get(url)
 
@@ -55,13 +55,13 @@ print(response.text)
 ```
 
 ```shell
-curl "https://blaze.rest/api/v1/blaze/joke"
+curl "https://blaze.rest/api/v1/blaze/joke?token=YOUR_BLAZE_TOKEN"
 ```
 
 ```javascript
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-const url = `https://blaze.rest/api/v1/blaze/joke`;
+const url = `https://blaze.rest/api/v1/blaze/joke?token=YOUR_BLAZE_TOKEN`;
 
 fetch(url)
   .then(response => response.text())
