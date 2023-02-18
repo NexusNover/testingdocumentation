@@ -74,7 +74,7 @@ fetch(url)
 ```json
 {
    "status":200,
-   "data":{
+   "data": {
       "joke":"A boat builder is showing his son one of his forests. He turns to him and says, \"Son, one day this will all be oars\""
    }
 }
@@ -92,6 +92,69 @@ Parameter | Required | Description
 --------- | ------- | -----------
 token | true | Your blaze.rest API Token
 
+## Random Quote
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://blaze.rest/api/v1/blaze/quote?token=YOUR_BLAZE_TOKEN")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+response = http.request(request)
+
+puts response.read_body
+```
+
+```python
+import requests
+url = f"https://blaze.rest/api/v1/blaze/quote?token=YOUR_BLAZE_TOKEN"
+
+response = requests.get(url)
+
+print(response.text)
+```
+
+```shell
+curl "https://blaze.rest/api/v1/blaze/quote?token=YOUR_BLAZE_TOKEN"
+```
+
+```javascript
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
+const url = `https://blaze.rest/api/v1/blaze/quote?token=YOUR_BLAZE_TOKEN`;
+
+fetch(url)
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+> This endpoint will respond with the following JSON response
+
+```json
+{
+   "status":200,
+   "data": {
+      "quote":"All you need is the plan, the road map, and the courage to press on to your destination."
+   }
+}
+```
+
+This endpoint generates a random joke
+
+### HTTP Request
+
+`GET https://blaze.rest/api/v1/blaze/quote`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+token | true | Your blaze.rest API Token
 
 # Discord
 
