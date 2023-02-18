@@ -26,6 +26,73 @@ meta:
 
 Welcome to the documentation website for blaze.rest, a powerful API designed to help you create scalable and efficient RESTful web services. This website serves as a comprehensive guide to using the blaze.rest API, providing everything you need to get started and build complex web applications.
 
+# blaze.rest
+
+## Random Joke
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://blaze.rest/api/v1/blaze/joke")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+response = http.request(request)
+
+puts response.read_body
+```
+
+```python
+import requests
+url = f"https://blaze.rest/api/v1/blaze/joke"
+
+response = requests.get(url)
+
+print(response.text)
+```
+
+```shell
+curl "https://blaze.rest/api/v1/blaze/joke"
+```
+
+```javascript
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
+const url = `https://blaze.rest/api/v1/blaze/joke`;
+
+fetch(url)
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+```
+
+> This endpoint will respond with the following JSON response
+
+```json
+{
+   "status":200,
+   "data":{
+      "joke":"A boat builder is showing his son one of his forests. He turns to him and says, \"Son, one day this will all be oars\""
+   }
+}
+```
+
+This endpoint generates a random joke
+
+### HTTP Request
+
+`GET https://blaze.rest/api/v1/blaze/joke`
+
+### Query Parameters
+
+Parameter | Required | Description
+--------- | ------- | -----------
+token | true | Your blaze.rest API Token
+
+
 # Discord
 
 ## Application Information
